@@ -1,40 +1,38 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
+ * insert_node - inserts a number into a sorted list
+ * @head: pointer to the list
+ * @number: number to add
+ * Return: address of the added node else NULL
  */
-int main(void)
+listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *head;
+  listint_t *old, *new, *current;
 
-	head = NULL;
-	add_nodeint_end(&head, -27);
-	add_nodeint_end(&head, 1);
-	add_nodeint_end(&head, 2);
-//	add_nodeint_end(&head, 3);
-//	add_nodeint_end(&head, 4);
-//	add_nodeint_end(&head, 98);
-//	add_nodeint_end(&head, 402);
-//	add_nodeint_end(&head, 1024);
-	print_listint(head);
+  if (head == NULL)
+    return (NULL);
 
-	printf("-----------------\n");
+  new = malloc(sizeof(listint_t));
+  if (new == NULL)
+    return (NULL);
 
-	insert_node(&head, -100);
-	insert_node(&head, -10);
-	insert_node(&head, -11);
-//	insert_node(&head, 9);
-//	insert_node(&head, -27);
-//	insert_node(&head, 0);
+  new->n = number;
+  old = NULL;
+  current = *head;
 
-	print_listint(head);
+  for (; current != NULL && current->n < number;)
+    {
+      old = current;
+      current = current->next;
+    }
 
-	free_listint(head);
+  new->next = current;
 
-	return (0);
+  if (old != NULL)
+    old->next = new;
+  else
+    *head = new;
+
+  return (new);
 }
