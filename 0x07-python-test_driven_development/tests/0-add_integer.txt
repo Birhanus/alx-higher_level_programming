@@ -1,71 +1,37 @@
-The ``0-add_integer`` module
-============================
-
-Using ``add_integer``
----------------------
-
-This is an example text file in reStructuredText format. First import
-``add_integer`` from the ``0-add_integer`` module:
-
 >>> add_integer = __import__('0-add_integer').add_integer
 
-Now use it:
-
->>> add_integer(2, 3)
-5
-
->>> add_integer(100.3, -2)
-98
-
->>> add_integer(-True, False)
--1
-
->>> add_integer(-True, -False)
--1
-
->>> add_integer(True, False)
-1
-
->>> add_integer(True, -False)
-1
-
->>> add_integer(100.3, 100.3)
-200
-
->>> add_integer("school", 100.3)
+>>> add_integer(0, 0)
+0
+>>> add_integer(15, 0)
+15
+>>> add_integer(0, 15)
+15
+>>> add_integer(-2, 2)
+0
+>>> add_integer(2, -2)
+0
+>>> add_integer(2)
+100
+>>> add_integer()
 Traceback (most recent call last):
-...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> add_integer('a', 'b')
+Traceback (most recent call last):
 TypeError: a must be an integer
-
->>> add_integer("Holberton", "School")
+>>> add_integer('a', 42)
 Traceback (most recent call last):
-...
 TypeError: a must be an integer
-
->>> add_integer(None, "School")
+>>> add_integer('a')
 Traceback (most recent call last):
-...
 TypeError: a must be an integer
-
->>> add_integer(5.25, 3.3)
-8
-
->>> add_integer(10, None)
+>>> add_integer(42, 'b')
 Traceback (most recent call last):
-...
 TypeError: b must be an integer
-
->>> add_integer("adc", 10)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
-
->>> add_integer(float('inf'),8)
+>>> add_integer(float('inf'), 0)
 Traceback (most recent call last):
 ...
 OverflowError: cannot convert float infinity to integer
-
->>> add_integer(float('NaN'), 7)
+>>> add_integer(0, float('nan'))
 Traceback (most recent call last):
 ...
 ValueError: cannot convert float NaN to integer
