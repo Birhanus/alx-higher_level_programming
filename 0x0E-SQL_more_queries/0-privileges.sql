@@ -1,3 +1,3 @@
--- sql script that lists all privileges of the MYSQL users
-SHOW GRANTS FOR 'user_id_1'@'localhost';
-SHOW GRANTS FOR 'user_id_2'@'localhost'; 
+-- sql script that lists all privileges of the MYSQL users.
+SHOW GRANTS FOR 'user_0d_1'@'localhost';
+SHOW GRANTS FOR 'user_0d_2'@'localhost';
