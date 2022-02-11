@@ -60,4 +60,3 @@ def matrix_mul(m_a, m_b):
             l_f.append(n)
         matrix.append(l_f)
     return matrix
-
