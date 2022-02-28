@@ -10,6 +10,6 @@ if (process.argv.length === 3) {
   process.exit(1);
 }
 if (process.argv.length > 3) {
-  console.log('Argumemts found');
+  console.log('Arguments found');
   process.exit(1);
 }
