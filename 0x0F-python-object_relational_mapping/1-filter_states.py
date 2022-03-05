@@ -10,7 +10,7 @@ if __name__ == "__main__":
     """perpare a cursor object using cursor() method"""
     cur = db.cursor()
     sql = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id"
-   
+
     """execute the SQL command """
     cur.execute(sql)
 
