@@ -14,7 +14,7 @@ from the database hbtn_0e_6_usa
 
 if __name__ == '__main__':
     import sys
-    from sqlalchemy import create_engine, not_, text
+    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
     from model_state import Base, State
 
@@ -22,9 +22,8 @@ if __name__ == '__main__':
                            .format(sys.argv[1], sys.argv[2], sys.argv[3]))
     Session = sessionmaker(bind=engine)
     s = Session()
-
     result = s.query(State).filter_by(name=sys.argv[4]).first()
     if result is not None:
         print(str(result.id))
     else:
-        print("Not Found")
+        print("Non found")
