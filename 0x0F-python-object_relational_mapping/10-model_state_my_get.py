@@ -25,6 +25,6 @@ if __name__ == '__main__':
 
     result = s.query(State).filter_by(name=sys.argv[4]).first()
     if result is not None:
-        print(result.id)
+        print(str(result.id))
     else:
         print("Not Found")
