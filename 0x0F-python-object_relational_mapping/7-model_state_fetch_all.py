@@ -20,7 +20,8 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     s = Session()
 
-    for row in s.query(State).order_by(State.id.asc()):
-        print(row.id, end="")
+    results = s.query(State).order_by(State.id.asc())
+    for a in results:
+        print(a.id, end="")
         print(': ', end="")
-        print(row.name)
+        print(a.name)
