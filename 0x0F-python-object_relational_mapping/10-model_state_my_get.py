@@ -12,18 +12,20 @@ from the database hbtn_0e_6_usa
     - If no state has the name you searched for, display Not found
 """
 
-if __name__ == '__main__':
-    import sys
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    from model_state import Base, State
+import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sys import argv
+from model_state import Base, State
 
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]))
-    Session = sessionmaker(bind=engine)
-    s = Session()
-    result = s.query(State).filter_by(name=sys.argv[4]).first()
-    if result is not None:
-        print(str(result.id))
+if __name__ == "__main__":
+    eng = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1],
+                        argv[2], argv[3]))
+    Base.metadata.create_all(eng)
+    Session = sessionmaker(bind=eng)
+    session = Session()
+    state = session.query(State).filter_by(name=argv[4]).first()
+    if state is not None:
+        print(str(state.id))
     else:
-        print("Non found")
+        print("Not found")
