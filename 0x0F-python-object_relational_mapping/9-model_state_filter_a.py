@@ -20,6 +20,6 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     s = Session()
 
-    for row in s.query(State).filter(State.name.like('%a%'))\
-                .order_by(State.id.asc()):
-        print("{} : {}".format(row.id, row.name))
+    result = s.query(State).filter(State.name.like('%a%')).order_by(State.id)
+    for a in result:
+        print("{}: {}".format(a.id, a.name))
